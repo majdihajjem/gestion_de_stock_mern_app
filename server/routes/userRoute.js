@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const { body, validationResult } = require('express-validator');
 //@description:register a new user
-//@params:POST /api/v1/users/regiter
+//@params:POST /api/v1/users/register
 //@access PUBLIC
 router.post('/register',body('email','please enter a valid email').isEmail(),body('password','password must be at least 8 characters').isLength({ min: 8 }),async(req,res)=>{
     try {
