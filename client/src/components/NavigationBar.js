@@ -3,6 +3,7 @@ import {Container,Nav,Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import { logout } from '../slices/userSlice';
+import '../App.css'
 function NavigationBar() {
   const dispatch=useDispatch()
   const {isAuth}=useSelector((state)=>state.user)
@@ -20,7 +21,7 @@ function NavigationBar() {
             <Link to="/">Home</Link>
             <Link to="/Product">Product</Link>
             <Link to="/Register">Register</Link>
-            <button onClick={logoutHandler}>Logout</button>
+            <button className='btnn' onClick={logoutHandler}>Logout</button>
             </>
             :<>
             <Link to="/">Home</Link>

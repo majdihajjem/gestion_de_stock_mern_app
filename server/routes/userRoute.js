@@ -4,6 +4,7 @@ const User = require('../models/userSchema')
 var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const { body, validationResult } = require('express-validator');
+const { authMiddleware } = require('../middlewares/authMiddlewares');
 //@description:register a new user
 //@params:POST /api/v1/users/register
 //@access PUBLIC
@@ -43,4 +44,5 @@ router.post('/login',body('email','please enter a valid email').isEmail(),body('
 
     }
 });
+router.post('/register',authMiddleware)
 module.exports = router

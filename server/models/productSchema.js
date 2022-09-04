@@ -6,9 +6,8 @@ const productSchema=mongoose.Schema({
         required: true
     },
     image: {type:'String', required:true},
-    description: {type:'String'},
-    price: {type:'Number'},
-    quantity: {type:'Number'}
+    desc: {type:'String'},
+    Qte: {type:'Number',required:true}
 
 })
 module.exports =mongoose.model('product',productSchema);

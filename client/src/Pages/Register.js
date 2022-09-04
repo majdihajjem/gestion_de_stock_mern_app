@@ -1,17 +1,17 @@
 import React from 'react'
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import {Form,Button} from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import {useDispatch,useSelector} from 'react-redux'
 import { registerUser } from '../slices/userSlice';
-import {useNavigate} from 'react-router-dom'
+// import {useNavigate} from 'react-router-dom'
 function Register() {
-    const nav=useNavigate()
+    // const nav=useNavigate()
     const dispatch = useDispatch()
     const {errors:userErrors,isAuth}=useSelector((state)=>state.user)
-    useEffect(()=>{
-        if(isAuth) nav('/Product')
-    },[isAuth])
+    // useEffect(()=>{
+    //     if(!isAuth) nav('/Login')
+    // },[isAuth])
     const { register, 
         handleSubmit, 
         formState: { errors } 

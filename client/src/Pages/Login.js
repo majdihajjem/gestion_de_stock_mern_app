@@ -10,7 +10,7 @@ function Login() {
     const dispatch = useDispatch()
     const {errors:userErrors,isAuth}=useSelector((state)=>state.user)
     useEffect(()=>{
-        if(isAuth) nav('/Product')
+        (isAuth)? nav('/Product'):nav('/Login')
     },[isAuth])
     const { register, 
         handleSubmit, 
@@ -37,7 +37,6 @@ return (
         </Button>
         </Form>
 
-)
-}
+)}
 
 export default Login
