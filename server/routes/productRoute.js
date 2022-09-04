@@ -41,10 +41,43 @@ router.get('/',authMiddleware,async(req,res)=>{
       res.status(500).json({msg:'somthing whent wrong'})
   }
 })
-//@description:update Products
+//@description:delete Product by id
+//@params:Delete /api/v1/products/
+//@access PRIVATE
+router.delete('/:id',authMiddleware,async(req,res)=>{
+  try {
+      await product.findByIdAndDelete(req.params.id)
+      res.json('seccess delete')
+
+  } catch (error) {
+      res.status(500).json({msg:'somthing whent wrong'})
+  }
+})
+//@description:update Product by id
 //@params:PUT /api/v1/products/
 //@access PRIVATE
+router.put('/:id',authMiddleware,async(req,res)=>{
+  try {
+      await product.findByIdAndUpdate(req.params.id,{...req.body})
+      res.json('seccess update')
 
+  } catch (error) {
+      res.status(500).json({msg:'somthing whent wrong'})
+  }
+})
 
+//@description:update Product image by id
+//@params:PUT /api/v1/products/image/:id
+//@access PRIVATE
+router.put('/image/:id',authMiddleware,upload.single('picture'),async(req,res)=>{
+  try {
+    const imagePath=`http://localhost:5000/${req.file.path}`;
+      await product.findByIdAndUpdate(req.params.id,{image:imagePath})
+      res.json('seccess update')
+
+  } catch (error) {
+      res.status(500).json({msg:'somthing whent wrong'})
+  }
+})
 
 module.exports = router

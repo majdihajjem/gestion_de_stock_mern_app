@@ -8,7 +8,7 @@ const { authMiddleware } = require('../middlewares/authMiddlewares');
 //@description:register a new user
 //@params:POST /api/v1/users/register
 //@access PUBLIC
-router.post('/register',body('email','please enter a valid email').isEmail(),body('password','password must be at least 8 characters').isLength({ min: 8 }),async(req,res)=>{
+router.post('/register',authMiddleware,body('email','please enter a valid email').isEmail(),body('password','password must be at least 8 characters').isLength({ min: 8 }),async(req,res)=>{
     try {
         const{username,email,password}=req.body
         const errors = validationResult(req);
@@ -44,5 +44,4 @@ router.post('/login',body('email','please enter a valid email').isEmail(),body('
 
     }
 });
-router.post('/register',authMiddleware)
 module.exports = router
