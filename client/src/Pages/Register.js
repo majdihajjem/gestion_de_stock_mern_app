@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css'
 // import { useEffect } from 'react';
 import {Form,Button} from 'react-bootstrap'
 import { useForm } from "react-hook-form";
@@ -20,6 +21,9 @@ function Register() {
         dispatch(registerUser(data))
     }
 return (
+    <div className='bgr'>
+    <div className='log'>
+        <div className='login'>
         <Form onSubmit={handleSubmit(submitFnct)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>User Name</Form.Label>
@@ -43,6 +47,9 @@ return (
         Submit
         </Button>
         </Form>
+        </div>
+        </div>
+        </div>
 
 )
 }

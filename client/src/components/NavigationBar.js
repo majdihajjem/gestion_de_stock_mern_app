@@ -19,7 +19,7 @@ function NavigationBar() {
             {isAuth ?
             <>
             <Link to="/">Home</Link>
-            <Link to="/Product">Product</Link>
+            <Link to="/Products">Products</Link>
             <Link to="/Register">Register</Link>
             <button className='btnn' onClick={logoutHandler}>Logout</button>
             </>

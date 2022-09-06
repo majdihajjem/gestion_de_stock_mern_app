@@ -33,7 +33,7 @@ router.post('/addProduct',authMiddleware,upload.single('picture'),async(req,res)
 //@description:get Products
 //@params:GET /api/v1/products/
 //@access PRIVATE
-router.get('/',authMiddleware,async(req,res)=>{
+router.get('/',async(req,res)=>{
   try {
       const productList=await product.find()
       res.json(productList)

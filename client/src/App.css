@@ -10,3 +10,52 @@
   background-color: gray;
   border-radius: 8px;
 }
+.bgl{
+  background-image: url(../public/111.jpg);
+  padding-top: 40px;
+  padding-bottom: 49px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.bgr{
+  background-image: url(../public/333.jpg);
+  padding-top: 1px;
+  padding-bottom: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.log{
+  width: 30%;
+  margin: auto;
+  margin-top: 90px;
+  border-radius: 25px;
+  background-color: rgba(0,0,0,0.1);
+
+}
+.login{
+  text-align: center;
+  padding-top: 70px;
+}
+.login h1 {
+  color: #333;
+  margin-bottom: 80px;
+}
+.login input{
+  width: 300px;
+  margin: auto;
+}
+.login button{
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.homed *{
+  height: 550px;
+  
+}
+.homed{
+  margin: auto;
+  margin-top: 20px; 
+  width: 98%;
+}
