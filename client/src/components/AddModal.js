@@ -4,17 +4,20 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'
 import { useForm } from "react-hook-form";
 import {useDispatch} from 'react-redux'
+import { addProduct } from '../slices/productSlice';
 function AddModal() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const dispatch=useDispatch()
+  const [fileUpload,setFileUpload]=useState({});
   const { register, 
     handleSubmit, 
     formState: { errors } 
 } = useForm();
 const submitFnct = (data) => { 
-    // dispatch(registerUser(data))
+    dispatch(addProduct({...data,file:fileUpload}))
 }
   return (
     <>
@@ -35,14 +38,16 @@ const submitFnct = (data) => {
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>image</Form.Label>
-        <Form.Control {...register("image")} type="file" accept='.png,.jpg,.jpeg' placeholder="image" />
+        <Form.Control 
+        onChange={(e)=>setFileUpload(e.target.files[0])}
+        type="file" accept='.png,.jpg,.jpeg' placeholder="image" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Quantite</Form.Label>
         <Form.Control {...register("Qte")} type="Number" placeholder="quantite" />
         </Form.Group>
         <Button variant="primary" type="submit">
-        Submit
+        Add
         </Button>
         </Form>
       </Modal>
