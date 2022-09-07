@@ -4,28 +4,19 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../slices/productSlice";
-function AddModal() {
-  const [show, setShow] = useState(false);
+import { editProduct } from "../slices/productSlice";
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function EditProductModal({ product, show = false, handleClose }) {
   const dispatch = useDispatch();
   const [fileUpload, setFileUpload] = useState({});
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm({ defaultValues: product });
   const submitFnct = (data) => {
-    dispatch(addProduct({ ...data, file: fileUpload }));
+    dispatch(editProduct({ product: data, id: product._id, file: fileUpload }));
+    handleClose();
   };
+
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Add Product
-      </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit(submitFnct)} style={{ padding: 16 }}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -63,11 +54,11 @@ function AddModal() {
             />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Add
+            Edit
           </Button>
         </Form>
       </Modal>
     </>
   );
 }
-export default AddModal;
+export default EditProductModal;
