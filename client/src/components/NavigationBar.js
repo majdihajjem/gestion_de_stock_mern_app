@@ -40,8 +40,11 @@ function NavigationBar() {
             </div>
           ) : (
             <div style={{ display: "flex" }}>
+              &nbsp;
               <Link to="/">Home</Link>
+              &nbsp;
               <Link to="/Login">Login</Link>
+              &nbsp;
             </div>
           )}
 
