@@ -21,3 +21,7 @@ code {
   overflow: auto;
   flex-direction: row;
 }
+
+a{
+  text-decoration: none !important;
+}
