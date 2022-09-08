@@ -3,12 +3,14 @@ import axios from "axios";
 
 export const registerUser = createAsyncThunk(
   "user/registerUser",
-  async (data, { rejectWithValue }) => {
+  async ({ onSuccess, ...data }, { rejectWithValue }) => {
     try {
       const res = await axios.post(
         process.env.REACT_APP_API + "/users/register",
-        data,{ headers: { token: localStorage.getItem("token") } }
+        data,
+        { headers: { token: localStorage.getItem("token") } }
       );
+      onSuccess?.();
       return res.data;
     } catch (error) {
       return rejectWithValue(

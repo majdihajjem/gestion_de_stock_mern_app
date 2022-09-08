@@ -14,12 +14,16 @@ function Register() {
   //     if(!isAuth) nav('/Login')
   // },[isAuth])
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const submitFnct = (data) => {
-    dispatch(registerUser(data));
+    dispatch(registerUser({...data, onSuccess: () => {
+      reset()
+      alert("Utilisateur ajouter avec success")
+    }}));
   };
   return (
     <div className="bgr">
