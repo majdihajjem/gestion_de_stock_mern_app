@@ -13,30 +13,44 @@ function NavigationBar() {
   };
   return (
     <Navbar bg="dark" variant="dark">
-      <Container>
+      <Container style={{ justifyContent: "flex-start", width: "100%" }}>
         <Navbar.Brand href="#home">OMEGA</Navbar.Brand>
-        <Nav className="me-auto">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
           {isAuth ? (
-            <>
+            <div style={{ display: "flex" }}>
+              &nbsp;
               <Link to="/">Home</Link>
+              &nbsp;
               <Link to="/Products">Products</Link>
+              &nbsp;
               {userInfo?.role === "admin" && (
                 <Link to="/Register">Register</Link>
               )}
+              &nbsp;
               {userInfo?.role === "admin" && (
                 <Link to="/UserManagment">Managment</Link>
               )}
-              <button className="btnn" onClick={logoutHandler}>
-                Logout
-              </button>
-            </>
+              &nbsp;
+            </div>
           ) : (
-            <>
+            <div style={{ display: "flex" }}>
               <Link to="/">Home</Link>
               <Link to="/Login">Login</Link>
-            </>
+            </div>
           )}
-        </Nav>
+
+          {isAuth && (
+            <button className="btnn" onClick={logoutHandler}>
+              Logout
+            </button>
+          )}
+        </div>
       </Container>
     </Navbar>
   );

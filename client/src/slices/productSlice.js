@@ -24,7 +24,7 @@ export const getProducts = createAsyncThunk(
 
 export const addProduct = createAsyncThunk(
   "products/addProduct",
-  async (data, { rejectWithValue, dispatch }) => {
+  async ({ onSuccess, onError, ...data }, { rejectWithValue, dispatch }) => {
     try {
       const form = new FormData();
       form.append("picture", data.file);
@@ -36,8 +36,12 @@ export const addProduct = createAsyncThunk(
         form,
         { headers: { token: localStorage.getItem("token") } }
       );
+
+      onSuccess?.();
+
       return dispatch(getProducts());
     } catch (error) {
+      onError?.()
       return rejectWithValue(
         error.response && error.response.data.msg
           ? error.response.data.msg

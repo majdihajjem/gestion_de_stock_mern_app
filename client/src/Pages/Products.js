@@ -17,7 +17,9 @@ function Products() {
 
   return (
     <div>
-      <AddModal />
+      <div style={{ display: "flex", justifyContent: "flex-end", padding: 24 }}>
+        <AddModal />
+      </div>
       <br />
       <div className="product-container">
         {loading && <Spinner animation="border" />}

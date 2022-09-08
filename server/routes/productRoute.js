@@ -36,6 +36,7 @@ router.post(
       });
       res.json(newProduct);
     } catch (error) {
+      console.log(error)
       res.status(500).json({ msg: "somthing whent wrong" });
     }
   }
@@ -46,7 +47,7 @@ router.post(
 //@access PRIVATE
 router.get("/", authMiddleware, async (req, res) => {
   try {
-    const productList = await product.find();
+    const productList = await product.find().sort({createdAt:-1});
     res.json(productList);
   } catch (error) {
     res.status(500).json({ msg: "somthing whent wrong" });

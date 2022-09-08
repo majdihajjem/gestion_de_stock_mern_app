@@ -13,13 +13,28 @@ function AddModal() {
   const dispatch = useDispatch();
   const [fileUpload, setFileUpload] = useState({});
   const {
+    reset: resetForm,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const submitFnct = (data) => {
-    dispatch(addProduct({ ...data, file: fileUpload }));
+    dispatch(
+      addProduct({
+        ...data,
+        file: fileUpload,
+        onSuccess: () => {
+          resetForm();
+          setShow(false);
+        },
+        onError: () => {
+          alert("Erreur servenue lors d'ajout du produit");
+        },
+      })
+    );
   };
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
