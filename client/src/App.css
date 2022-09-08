@@ -6,8 +6,8 @@
   color: blue;
   font-weight: bold;
   border:none;
-  margin-left:800px;
-  background-color: gray;
+  justify-content: end;
+  background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity))!important;;
   border-radius: 8px;
 }
 .bgl{

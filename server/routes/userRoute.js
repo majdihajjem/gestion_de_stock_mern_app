@@ -51,7 +51,7 @@ router.post(
       if (!existUser)
         return res
           .status(400)
-          .json({ msg: "you should contact the administrator" });
+          .json({ msg: "this site is privet you should contact the administrator" });
       var validate = await bcrypt.compare(password, existUser.password);
       if (!validate) return res.status(400).json({ msg: "invalid password" });
       token = jwt.sign({ sub: existUser._id }, process.env.JWT_SECRET);
@@ -62,7 +62,7 @@ router.post(
     }
   }
 );
-
+//get users for user managment
 router.get("/", async (req, res) => {
   try {
     const users = await User.find({ role: "customer" });

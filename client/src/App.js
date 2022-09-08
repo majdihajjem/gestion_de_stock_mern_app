@@ -8,7 +8,7 @@ import Products from "./Pages/Products";
 import NavigationBar from "./components/NavigationBar";
 import { useSelector } from "react-redux";
 import UserManagement from "./Pages/UserManagment";
-
+import ProtectedRoute from "./components/ProtectedRoute"
 function App() {
   const { userInfo } = useSelector((state) => state.user);
 
@@ -18,12 +18,13 @@ function App() {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Products" element={<Products />} />
+          <Route path="/Login" element={<Login />} />
+          <Route element={<ProtectedRoute/>}>
+          <Route path="/Products" element={<Products />} />
 
-        {isAdmin && <Route path="/Register" element={<Register />} />}
-        {isAdmin && <Route path="/UserManagemt" element={<UserManagement />} />}
-
+          {isAdmin && <Route path="/Register" element={<Register />} />}
+          {isAdmin &&<Route path="/UserManagment" element={<UserManagement />} />}
+        </Route>
         <Route path="*" element={<Home />} />
       </Routes>
     </div>

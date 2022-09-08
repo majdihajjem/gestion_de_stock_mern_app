@@ -24,7 +24,7 @@ function NavigationBar() {
                 <Link to="/Register">Register</Link>
               )}
               {userInfo?.role === "admin" && (
-                <Link to="/UserManagment">User Managment</Link>
+                <Link to="/UserManagment">Managment</Link>
               )}
               <button className="btnn" onClick={logoutHandler}>
                 Logout

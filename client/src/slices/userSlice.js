@@ -7,7 +7,7 @@ export const registerUser = createAsyncThunk(
     try {
       const res = await axios.post(
         "http://localhost:5000/api/v1/users/register",
-        data
+        data,{ headers: { token: localStorage.getItem("token") } }
       );
       return res.data;
     } catch (error) {
