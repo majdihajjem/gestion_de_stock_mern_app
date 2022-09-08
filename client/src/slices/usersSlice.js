@@ -6,7 +6,7 @@ export const getListUsers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       return axios
-        .get("http://localhost:5000/api/v1/users")
+        .get(process.env.REACT_APP_API + "/users")
         .then(({ data }) => data);
     } catch (error) {
       return rejectWithValue(

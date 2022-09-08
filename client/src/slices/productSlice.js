@@ -7,7 +7,7 @@ export const getProducts = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:5000/api/v1/products", {
+      const res = await axios.get(process.env.REACT_APP_API + "/products", {
         headers: { token },
       });
 
@@ -32,7 +32,7 @@ export const addProduct = createAsyncThunk(
       form.append("desc", data.desc);
       form.append("Qte", data.Qte);
       const res = await axios.post(
-        "http://localhost:5000/api/v1/products/addproduct",
+        process.env.REACT_APP_API + "/products/addproduct",
         form,
         { headers: { token: localStorage.getItem("token") } }
       );
