@@ -22,8 +22,7 @@ app.listen(process.env.PORT, () =>
   console.log("listening on port " + process.env.PORT)
 );
 
-app.get("/", (req, res) => {
+app.use(express.static(path.join(__dirname, "../client/build")));
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
-
-app.use(express.static(path.join(__dirname, "../client/build")));

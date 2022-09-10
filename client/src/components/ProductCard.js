@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import EditProductModal from "./EditProductModal";
 
 function ProductCard({ product }) {
+  const { image } = product;
   const dispatch = useDispatch();
   const [toDeleteProduct, setToDeleteProduct] = useState(false);
   const handleHideToDeleteProduct = () => setToDeleteProduct(false);
@@ -14,10 +15,12 @@ function ProductCard({ product }) {
   const handleHideToEditProduct = () => setToEditProduct(false);
   const handleShowToEditProduct = () => setToEditProduct(true);
 
+  const imageSrc = `${process.env.REACT_APP_IMAGE_DIR}${image?.split("my-images\\")?.[1]}`
+
   return (
     <>
       <Card style={{ width: "18rem", margin: 18 }}>
-        <Card.Img variant="top" src={product.image} style={{ height: 160 }} />
+        <Card.Img variant="top" src={imageSrc} style={{ height: 160 }} />
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
           <Card.Text>{product.desc}</Card.Text>
