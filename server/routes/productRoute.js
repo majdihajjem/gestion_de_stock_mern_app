@@ -26,8 +26,8 @@ router.post(
   async (req, res) => {
     try {
       const { title, desc, Qte } = req.body;
-      console.log(req.file);
-      const imagePath = `http://localhost:5000/${req.file.path}`;
+      console.log({file: req.file});
+      const imagePath = req.file.path;
       const newProduct = await product.create({
         title,
         desc,
@@ -74,7 +74,7 @@ router.put(
   async (req, res) => {
     try {
       const update = { ...req.body };
-      if (req.file) update.image = `http://localhost:5000/${req.file.path}`;
+      if (req.file) update.image = req.file.path;
 
       console.clear();
       console.log(res.file);
