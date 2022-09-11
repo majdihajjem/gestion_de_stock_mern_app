@@ -89,7 +89,7 @@ export const deleteProduct = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:5000/api/v1/products/${id}`, {
+      await axios.delete(process.env.REACT_APP_API + "/products/" + id, {
         headers: { token },
       });
       return id;

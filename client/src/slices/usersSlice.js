@@ -22,7 +22,7 @@ export const deleteUser = createAsyncThunk(
   "users/deleteUser",
   async (userId, { rejectWithValue }) => {
     try {
-      await axios.delete(`http://localhost:5000/api/v1/users/${userId}`);
+      await axios.delete(process.env.REACT_APP_API + "/users" + userId);
       return userId;
     } catch (error) {
       return rejectWithValue(
