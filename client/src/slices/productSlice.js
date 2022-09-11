@@ -41,7 +41,7 @@ export const addProduct = createAsyncThunk(
 
       return dispatch(getProducts());
     } catch (error) {
-      onError?.()
+      onError?.();
       return rejectWithValue(
         error.response && error.response.data.msg
           ? error.response.data.msg
@@ -64,7 +64,7 @@ export const editProduct = createAsyncThunk(
 
       console.log({ product, id, file });
       await axios
-        .put(`http://localhost:5000/api/v1/products/${id}`, form, {
+        .put(process.env.REACT_APP_API + "/products/" + id, form, {
           headers: {
             token: localStorage.getItem("token"),
             "Content-type": "multipart/form-data",
