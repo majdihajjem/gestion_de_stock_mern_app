@@ -77,13 +77,13 @@ router.put(
       if (req.file) update.image = req.file.path;
 
       console.clear();
-      console.log(res.file);
+      console.log(update);
 
       const newProduct = await product.updateOne(
         { _id: req.params.id },
         update
       );
-      res.json({ newProduct, message: "seccess update" });
+      res.json({ newProduct, message: "seccess update", update });
     } catch (error) {
       res.status(500).json({ msg: "somthing whent wrong" });
     }

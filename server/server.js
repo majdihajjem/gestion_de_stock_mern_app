@@ -16,13 +16,16 @@ app.use(cors());
 app.use("/api/v1/users", require("./routes/userRoute"));
 app.use("/api/v1/products", require("./routes/productRoute"));
 
-app.use("/my-images", express.static("my-images"));
+
+
+app.use("/my-images", express.static(path.join(__dirname, "../my-images")));
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
 //create a server
 app.listen(process.env.PORT, () =>
   console.log("listening on port " + process.env.PORT)
 );
-
-app.use(express.static(path.join(__dirname, "../client/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
